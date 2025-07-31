@@ -3,8 +3,11 @@ This project uses a logistic regression model and sampling techniques such as **
 
 ## Data Preprocessing:
 
-#### Rewording the "Loan Status" column:
-The original loan_status column included many different statuses. I simplified these using the following mapping:
+#### Rewording the "Loan_Status" column:
+The original loan_status column included many different statuses:
+![Screenshot of "loan_status" column distribution](images/loan_status_distribution.png)
+
+The results show how most of the individuals in the dataset had a "Fully paid" loan status. I simplified these using the following mapping:
 ```
 conditions = [
     loan['loan_status'].str.contains('Charged Off', na=False),
@@ -109,17 +112,16 @@ unpaid_loan
 0    34291
 1     6110
 ```
-
-To address the class imbalance, I used different sampling techniques to handle class imbalance:
+### Handling Class Imbalance with Sampling Techniques
+To address the class imbalance in the loan default dataset, several sampling strategies were applied prior to training a Logistic Regression model:
 - RandomOverSampler
 - SMOTE
 - ADASYN
 - RandomUnderSampler
 
-After running a Logistic Regression model with the different sampling techniques I compared each of the 4 models accuracy, f1-score, recall, and AUC score:
+These helped balance the dataset before fitting the logistic regression model.
 
-
-An example of how the sampler method was used in python is: 
+#### Example: Using RandomOverSampler in Python
 
 ```
 from sklearn.linear_model import LogisticRegression
@@ -155,5 +157,12 @@ sns.heatmap(cm, annot = True, fmt='d', cmap='Blues',
 
 ```
 
-The RandomOverSampler produces the following confusion matrix:
+#### RandomOverSampler Results
+The RandomOverSampler produces the following confusion matrix and results:
+![Screenshot of accuracy, f1-score, recall, AUC of RandomOverSampler](images/ROS_results.png)
+
 ![Screenshot of confusion matrix](images/ROS_cm.png)
+
+#### Comparison of Sampling Techniques
+After applying and evaluating **RandomOverSampler, SMOTE, ADASYN, and RandomUnderSampler** to the Logistic Regression model, their performances was visualized and compared in the bar chart below:
+![Screenshot of sampling comparison](sampling_comparison.png)
