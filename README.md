@@ -156,3 +156,4 @@ sns.heatmap(cm, annot = True, fmt='d', cmap='Blues',
 ```
 
 The RandomOverSampler produces the following confusion matrix:
+![Screenshot of confusion matrix](images/ROS_cm.png)
