@@ -5,7 +5,8 @@ This project uses a logistic regression model and sampling techniques such as **
 
 #### Rewording the "Loan_Status" column:
 The original loan_status column included many different statuses:
-![Screenshot of "loan_status" column distribution](images/loan_status_distribution.png)
+
+<img src="images/loan_status_distribution.png" alt="RandomOverSampler Results" height="400"/>
 
 The results show how most of the individuals in the dataset had a "Fully paid" loan status. I simplified these using the following mapping:
 ```
@@ -165,4 +166,4 @@ The RandomOverSampler produces the following confusion matrix and results:
 
 #### Comparison of Sampling Techniques
 After applying and evaluating **RandomOverSampler, SMOTE, ADASYN, and RandomUnderSampler** to the Logistic Regression model, their performances was visualized and compared in the bar chart below:
-![Screenshot of sampling comparison](sampling_comparison.png)
+![Screenshot of sampling comparison](images/sampling_comparison.png)
